@@ -12,7 +12,7 @@ const Items = ({
   auctionStatus,
   dayDifference,
   minutesDifference,
-  hourDifference
+  hourDifference,
 }) => {
   // navigate is used for smooth navigation to product page or auction space when required by onclick
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ const Items = ({
             color: "white",
             paddingTop: "2px",
             width: "180px",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           {auctionStatus}
@@ -81,8 +81,13 @@ const Items = ({
         </div>
         <div className="title">{productName}</div>
         <div className="price">
-         { auctionStatus === "Upcoming Auction" && <p>Starts in {dayDifference} days, {hourDifference} hours, {minutesDifference} minutes </p>}
-          <p>Current Price: &#x20b9; {currentPrice} </p>
+          {auctionStatus === "Upcoming Auction" && (
+            <p>
+              Starts in {dayDifference} days, {hourDifference} hours,{" "}
+              {minutesDifference} minutes{" "}
+            </p>
+          )}
+          <p>Current Price: LKR {currentPrice} </p>
           <p>Start Time: {auctionStartDateTime}</p>
           <p>End Time: {auctionEndDateTime}</p>
         </div>

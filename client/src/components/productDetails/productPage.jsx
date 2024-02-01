@@ -90,10 +90,17 @@ export default function ProductPage(props) {
   const handleClick = () => {
     navigate(`/auctionSpace?id=` + id);
   };
- 
+
   const chatWithSeller = () => {
-    navigate(`/chat?id=`+product.sellerId+"&name="+product.name+"&bool=t&product="+product.productName);
-  }
+    navigate(
+      `/chat?id=` +
+        product.sellerId +
+        "&name=" +
+        product.name +
+        "&bool=t&product=" +
+        product.productName
+    );
+  };
   return (
     <>
       <NavBar />
@@ -112,7 +119,7 @@ export default function ProductPage(props) {
             <span className={styles.ship}>
               Shipment from {product.shipmentFromPlace}
             </span>
-            <span> Base Price: &#x20b9; {product.basePrice}</span>
+            <span> Base Price: LKR {product.basePrice}</span>
             <span>
               {" "}
               Seller :{" "}
@@ -132,11 +139,11 @@ export default function ProductPage(props) {
               <button onClick={addToWatchList} className={styles.button}>
                 Add to Watch List
               </button>
-              </div>
-              <div className={styles.btn}>
+            </div>
+            <div className={styles.btn}>
               <button onClick={chatWithSeller} className={styles.button}>
                 Chat with Seller
-                </button>
+              </button>
             </div>
           </div>
         </div>

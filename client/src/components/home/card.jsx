@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
 const Card = ({ Product }) => {
   var shipmentFrom = Product.shipment;
-  if(shipmentFrom){
-    var partsOfShipment=shipmentFrom.split(',')}
-  else{
-    var partsOfShipment=" ";
+  if (shipmentFrom) {
+    var partsOfShipment = shipmentFrom.split(",");
+  } else {
+    var partsOfShipment = " ";
   }
-  
+
   var title = Product.productName;
   var price = Product.basePrice;
   var id = Product.productId;
@@ -23,10 +23,13 @@ const Card = ({ Product }) => {
     const myHeaders = new Headers({
       Authorization: "Bearer " + localStorage.getItem("token"),
     });
-    const res = await fetch("http://localhost:3001/api/addToWatchList?id=" + id, {
-      method: "GET",
-      headers: myHeaders,
-    });
+    const res = await fetch(
+      "http://localhost:3001/api/addToWatchList?id=" + id,
+      {
+        method: "GET",
+        headers: myHeaders,
+      }
+    );
 
     if (res.status === 404 || !res) {
       window.location = "/signup";
@@ -42,10 +45,10 @@ const Card = ({ Product }) => {
         </Image>
         <Description>
           <h5>{title}</h5>
-          <h6>Base Price : ₹{price}</h6>
+          <h6>Base Price : LKR {price}</h6>
           <p>Shipment From : {partsOfShipment[0]}</p>
           <p>Start Date : {startTime}</p>
-          <p>End Date   : {endTime}</p>
+          <p>End Date : {endTime}</p>
         </Description>
       </div>
       <button onClick={addToWatchList}>Add to Watch List</button>
@@ -65,7 +68,7 @@ const Container = styled.div`
     width: 100%;
     height: 33px;
     background-color: black;
-    color:white;
+    color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
